@@ -1,10 +1,8 @@
-import { Header } from '@/components/organisms/Header';
 import { StationDetail } from '@/components/templates/StationDetail';
 import { Station } from '@/interfaces/station';
 import { getNearStationsByName } from '@/lib/api/getNearStationsByName';
 import { getStationsByName } from '@/lib/api/getStationsByName';
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import Link from 'next/link';
+import type { GetServerSideProps, GetStaticPaths, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 
 interface Props {
@@ -18,7 +16,7 @@ interface Props {
 interface Params extends ParsedUrlQuery {
   stationName: string;
 }
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ params }) => {
   const currentStations = await getStationsByName(params!.stationName);
   const nearStations = await getNearStationsByName(3, params!.stationName);
 
