@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
       },
       nearStations
     },
-    revalidate: 60 * 60 * 24 * 7 // 7days
+    // revalidate: 60 * 60 * 24 * 7 // 7days
   }
 }
 
