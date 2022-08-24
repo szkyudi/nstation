@@ -38,11 +38,6 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ pa
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [],
-  fallback: true
-});
-
 const StationPage: NextPage<Props> = ({ currentStations, nearStations }) => {
   if (nearStations) {
     return (
