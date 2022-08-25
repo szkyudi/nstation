@@ -1,16 +1,15 @@
-import { Station } from "@/interfaces/station";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { CurrentStation } from "../organisms/CurrentStation";
 import { Header } from "../organisms/Header"
-import { NearStationList } from "../organisms/NearStationList";
+import { AdjacentStationList } from "../organisms/AdjacentStationList";
 
 type Props = {
   name: string;
-  list: Station[];
-  nearStations: string[][]
+  lines: string[];
+  adjacentStations: string[]
 }
-export const StationDetail: React.FC<Props> = ({ name, list, nearStations }) => {
+export const StationDetail: React.FC<Props> = ({ name, lines, adjacentStations }) => {
   return (
     <Box sx={{
       backgroundColor: grey[50]
@@ -20,10 +19,15 @@ export const StationDetail: React.FC<Props> = ({ name, list, nearStations }) => 
         <Box py={3}>
           <Box mb={2}>
             <Typography mb={1} variant="h6" component="h2">{name}駅</Typography>
-            <CurrentStation name={name} list={list} />
+            <CurrentStation name={name} lines={lines} />
           </Box>
-          {nearStations.length >= 1 ? (
-            <NearStationList currentStationName={name} stations={nearStations.slice(1)} />
+          {adjacentStations.length > 0 ? (
+            <Grid
+              container
+              spacing={1}
+            >
+              <AdjacentStationList within={1} name={name} stations={adjacentStations} />
+            </Grid>
           ):(
             <p>隣接する駅が見つかりませんでした。</p>
           )}

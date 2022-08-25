@@ -3,9 +3,9 @@ import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Paper } from
 
 type Props = {
   name: string;
-  list: Station[]
+  lines: string[]
 }
-export const CurrentStation: React.FC<Props> = ({ name, list }) => {
+export const CurrentStation: React.FC<Props> = ({ name, lines }) => {
   return (
     <Paper>
       <List
@@ -15,9 +15,9 @@ export const CurrentStation: React.FC<Props> = ({ name, list }) => {
           </ListSubheader>
         }
       >
-        {list.map(station => (
-          <ListItem key={station.line}>
-            <ListItemText primary={station.line} />
+        {lines.map(name => (
+          <ListItem key={name}>
+            <ListItemText primary={name} />
           </ListItem>
         ))}
       </List>

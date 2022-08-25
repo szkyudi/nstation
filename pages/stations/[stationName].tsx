@@ -1,51 +1,43 @@
 import { StationDetail } from '@/components/templates/StationDetail';
 import { Station } from '@/interfaces/station';
-import { getNearStationsByName } from '@/lib/api/getNearStationsByName';
+import { getAdjacentStations } from '@/lib/api/getAdjacentStations';
 import { getStationsByName } from '@/lib/api/getStationsByName';
 import type { GetServerSideProps, GetStaticPaths, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 
 interface Props {
-  currentStations: {
-    name: string
-    list: Station[]
-  };
-  nearStations: string[][];
+  name: string;
+  lines: string[];
+  adjacentStations: string[];
 }
 
 interface Params extends ParsedUrlQuery {
   stationName: string;
 }
 export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ params }) => {
-  const currentStations = await getStationsByName(params!.stationName);
-  const nearStations = await getNearStationsByName(3, params!.stationName);
-
+  const name = params?.stationName;
+  if (name === undefined) {
+    return {
+      notFound: true
+    }
+  }
+  const currentStations = await getStationsByName(name);
   if (currentStations.length === 0) {
     return {
       notFound: true
     }
   }
+  const lines = currentStations.map(station => station.line);
+  const adjacentStations = getAdjacentStations(currentStations);
 
   return {
-    props: {
-      currentStations: {
-        name: params!.stationName,
-        list: currentStations
-      },
-      nearStations
-    },
+    props: { name, lines, adjacentStations },
     // revalidate: 60 * 60 * 24 * 7 // 7days
   }
 }
 
-const StationPage: NextPage<Props> = ({ currentStations, nearStations }) => {
-  if (nearStations) {
-    return (
-      <StationDetail name={currentStations.name} list={currentStations.list} nearStations={nearStations} />
-    )
-  } else {
-    return <p>駅が見つかりませんでした。</p>
-  }
-}
+const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => (
+  <StationDetail name={name} lines={lines} adjacentStations={adjacentStations} />
+)
 
 export default StationPage
