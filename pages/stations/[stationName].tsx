@@ -2,8 +2,10 @@ import { StationDetail } from '@/components/templates/StationDetail';
 import { Station } from '@/interfaces/station';
 import { getAdjacentStations } from '@/lib/api/getAdjacentStations';
 import { getStationsByName } from '@/lib/api/getStationsByName';
+import { useStations } from '@/lib/states/stations';
 import type { GetServerSideProps, GetStaticPaths, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
+import { MutableSnapshot, RecoilRoot } from 'recoil';
 
 interface Props {
   name: string;
@@ -36,8 +38,13 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ pa
   }
 }
 
-const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => (
-  <StationDetail name={name} lines={lines} adjacentStations={adjacentStations} />
-)
+const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => {
+  const { initializeState } = useStations(name);
+  return (
+    <RecoilRoot initializeState={initializeState(adjacentStations)}>
+      <StationDetail name={name} lines={lines} />
+    </RecoilRoot>
+  )
+}
 
 export default StationPage

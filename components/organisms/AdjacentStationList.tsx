@@ -10,7 +10,7 @@ type Props = {
 export const AdjacentStationList: React.FC<Props> = ({ name, within, stations }) => {
   return (
     <Grid item xs={12} md={4}>
-      <Paper>
+      <Paper sx={{ overflow: 'hidden' }}>
         <List
           sx={{
             maxHeight: 600,
