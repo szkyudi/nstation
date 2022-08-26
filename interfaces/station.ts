@@ -20,6 +20,6 @@ export interface Station {
   // 駅の存在する都道府県名
   prefecture: string;
 
-  // 駅lの存在する路線名
+  // 駅の存在する路線名
   line: string;
 }

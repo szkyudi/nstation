@@ -1,12 +1,10 @@
-import { GetStationRequest } from "@/interfaces/api/getStations";
-import { getStations } from "./getStations";
+import { Station } from "@/interfaces/station";
 
-export async function getAdjacentStations(params: GetStationRequest): Promise<string[]> {
-  const currentStations = await getStations(params);
-  const adjacentStations = new Set<string>();
-  currentStations.forEach(station => {
-    station.prev && adjacentStations.add(station.prev);
-    station.next && adjacentStations.add(station.next);
+export function getAdjacentStations(stations: Station[]): string[] {
+  const nextStations = new Set<string>();
+  stations.forEach(station => {
+    station.prev && nextStations.add(station.prev);
+    station.next && nextStations.add(station.next);
   });
-  return Array.from(adjacentStations);
+  return Array.from(nextStations);
 }
