@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [],
-  fallback: true
+  fallback: 'blocking'
 });
 
 const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => {
