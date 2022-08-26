@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
       notFound: true
     }
   }
-  const currentStations = await getStationsByName(name);
+  const currentStations = await getStationsByName(decodeURIComponent(name));
   if (currentStations.length === 0) {
     return {
       notFound: true
