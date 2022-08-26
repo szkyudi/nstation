@@ -1,5 +1,4 @@
-import { Station } from "@/interfaces/station";
-import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Paper } from "@mui/material";
+import { List, ListItem, ListItemText, ListSubheader, Paper } from "@mui/material";
 
 type Props = {
   name: string;

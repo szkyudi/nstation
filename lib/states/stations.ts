@@ -1,5 +1,4 @@
-import { Station } from "@/interfaces/station";
-import { atom, atomFamily, MutableSnapshot, selectorFamily, useRecoilCallback, useRecoilState, useRecoilStateLoadable, useRecoilValueLoadable } from "recoil";
+import { atomFamily, MutableSnapshot, useRecoilState } from "recoil";
 import { RECOIL_KEYS } from ".";
 import { getStationsByName } from "../api/getStationsByName";
 

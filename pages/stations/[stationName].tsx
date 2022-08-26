@@ -1,11 +1,10 @@
 import { StationDetail } from '@/components/templates/StationDetail';
-import { Station } from '@/interfaces/station';
 import { getAdjacentStations } from '@/lib/api/getAdjacentStations';
 import { getStationsByName } from '@/lib/api/getStationsByName';
 import { useStations } from '@/lib/states/stations';
-import type { GetServerSideProps, GetStaticPaths, NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
-import { MutableSnapshot, RecoilRoot } from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 interface Props {
   name: string;

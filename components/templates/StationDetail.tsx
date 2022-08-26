@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
 import { CurrentStation } from "../organisms/CurrentStation";
 import { Header } from "../organisms/Header"
 import { AdjacentStationList } from "../organisms/AdjacentStationList";
