@@ -2,7 +2,7 @@ import { StationDetail } from '@/components/templates/StationDetail';
 import { getAdjacentStations } from '@/lib/api/getAdjacentStations';
 import { getStationsByName } from '@/lib/api/getStationsByName';
 import { useStations } from '@/lib/states/stations';
-import type { GetServerSideProps, NextPage } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring';
 import { RecoilRoot } from 'recoil';
 
@@ -15,7 +15,7 @@ interface Props {
 interface Params extends ParsedUrlQuery {
   stationName: string;
 }
-export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const name = params?.stationName;
   if (name === undefined) {
     return {
@@ -33,9 +33,14 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ pa
 
   return {
     props: { name, lines, adjacentStations },
-    // revalidate: 60 * 60 * 24 * 7 // 7days
+    revalidate: 60 // 60s
   }
 }
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: [],
+  fallback: true
+});
 
 const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => {
   const { initializeState } = useStations(name);
