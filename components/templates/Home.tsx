@@ -1,15 +1,16 @@
-import { Box, Container } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { Header } from "../organisms/Header"
+import { Footer } from "../organisms/Footer";
+import { theme } from "@/lib/styles/theme";
 
-export const StationDetail: React.FC = () => {
+export const Home: React.FC = () => {
   return (
     <Box sx={{
-      backgroundColor: grey[50]
+      backgroundColor: theme.palette.background.default,
+      minHeight: '100vh'
     }}>
       <Header />
-      <Container>
-      </Container>
+      <Footer />
     </Box>
   )
 }

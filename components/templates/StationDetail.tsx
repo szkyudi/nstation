@@ -12,7 +12,7 @@ type Props = {
   lines: string[];
 }
 export const StationDetail: React.FC<Props> = ({ name, lines }) => {
-  const { nearStationList } = useStations(name);
+  const { loadable } = useStations(name);
 
   return (
     <Box sx={{
@@ -26,13 +26,13 @@ export const StationDetail: React.FC<Props> = ({ name, lines }) => {
             <Typography mb={1} variant="h6" component="h2">{name}駅</Typography>
             <CurrentStation name={name} lines={lines} />
           </Box>
-          {nearStationList.length > 0 ? (
+          {loadable.state === 'hasValue' && loadable.contents.length > 0 ? (
             <Grid
               container
               spacing={1}
               alignItems="stretch"
             >
-              {nearStationList.map((stations, index) => (
+              {loadable.contents.map((stations, index) => (
                 <AdjacentStationList
                   key={JSON.stringify(stations)}
                   within={index + 1}
@@ -40,7 +40,7 @@ export const StationDetail: React.FC<Props> = ({ name, lines }) => {
                   stations={stations}
                 />
               ))}
-              {nearStationList.length < 3 && (
+              {loadable.contents.length < 3 && (
                 <AdjacentStationLoadMore name={name} />
               )}
             </Grid>
