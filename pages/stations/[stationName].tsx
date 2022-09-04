@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 
   return {
     props: { name, lines, adjacentStations },
-    revalidate: 60 * 60 * 24 * 365 // 30 days
+    revalidate: 60 * 60 * 24 * 365 // 365 days
   }
 }
 
