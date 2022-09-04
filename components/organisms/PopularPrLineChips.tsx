@@ -6,7 +6,7 @@ type Props = {
   lines: string[];
 }
 export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
-  const isDownSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isUpperSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
     <Grid container spacing={1}>
@@ -17,7 +17,7 @@ export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
               clickable
               component="a"
               variant="outlined"
-              size={isDownSm ? 'small' : 'medium'}
+              size={isUpperSm ? 'medium' : 'small'}
               label={name}
             />
           </Link>

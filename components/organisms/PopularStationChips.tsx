@@ -7,7 +7,7 @@ type Props = {
   stations: string[];
 }
 export const PopularStationChips: React.FC<Props> = ({ stations }) => {
-  const isDownSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isUpperSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
     <Grid container spacing={1}>
@@ -18,7 +18,7 @@ export const PopularStationChips: React.FC<Props> = ({ stations }) => {
               clickable
               component="a"
               variant="outlined"
-              size={isDownSm ? 'small' : 'medium'}
+              size={isUpperSm ? 'medium' : 'small'}
               avatar={<Avatar sx={{ background: grey[300]}}>{index + 1}</Avatar>}
               label={name}
             />
