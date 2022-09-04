@@ -4,16 +4,16 @@ import { grey } from "@mui/material/colors";
 import Link from "next/link";
 
 type Props = {
-  stations: string[];
+  lines: string[];
 }
-export const PopularStationChips: React.FC<Props> = ({ stations }) => {
+export const PopularJrLineChips: React.FC<Props> = ({ lines }) => {
   const isDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Grid container spacing={1}>
-      {stations.map((name, index) => (
+      {lines.map((name, index) => (
         <Grid item key={name}>
-          <Link href={`/stations/${name}`}>
+          <Link href={`/lines/${name}`}>
             <Chip
               clickable
               component="a"
