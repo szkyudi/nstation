@@ -1,6 +1,5 @@
-import LinkIcon from "@mui/icons-material/Link";
-import { Chip, Grid, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Paper, Stack } from "@mui/material";
-import Link from "next/link";
+import { Chip, Grid, List, ListSubheader, Paper, Stack } from "@mui/material";
+import { StationListItem } from "./StationListItem";
 
 type Props = {
   name: string;
@@ -21,16 +20,7 @@ export const AdjacentStationList: React.FC<Props> = ({ name, within, stations })
             </ListSubheader>
           }
         >
-          {stations.map(name => (
-            <Link key={name} href={`/stations/${name}`} passHref>
-              <ListItemButton component="a">
-                <ListItemIcon>
-                  <LinkIcon />
-                </ListItemIcon>
-                <ListItemText primary={name} />
-              </ListItemButton>
-            </Link>
-          ))}
+          {stations.map(name => (<StationListItem key={name} name={name} />))}
         </List>
       </Paper>
     </Grid>
