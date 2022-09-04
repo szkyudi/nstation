@@ -7,7 +7,6 @@ import { alpha, Box, InputBase, LinearProgress, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import MuiLink from '@mui/material/Link';
-import { theme } from '@/lib/styles/theme';
 
 
 const Search = styled('form')(({ theme }) => ({

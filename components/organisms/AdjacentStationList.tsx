@@ -1,4 +1,4 @@
-import { Chip, Grid, List, ListSubheader, Paper, Stack } from "@mui/material";
+import { Chip, List, ListSubheader, Stack } from "@mui/material";
 import { StationListItem } from "./StationListItem";
 
 type Props = {

@@ -1,4 +1,5 @@
-import { Avatar, Chip, Grid, useMediaQuery, useTheme } from "@mui/material";
+import { theme } from "@/lib/styles/theme";
+import { Avatar, Chip, Grid, useMediaQuery } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Link from "next/link";
 
@@ -6,7 +7,6 @@ type Props = {
   stations: string[];
 }
 export const PopularStationList: React.FC<Props> = ({ stations }) => {
-  const theme = useTheme();
   const isDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
