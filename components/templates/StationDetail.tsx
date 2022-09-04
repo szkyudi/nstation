@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Container, Grid, Typography } from "@mui/material";
 import { CurrentStation } from "../organisms/CurrentStation";
 import { Header } from "../organisms/Header"
 import { AdjacentStationList } from "../organisms/AdjacentStationList";
@@ -19,14 +19,14 @@ export const StationDetail: React.FC<Props> = ({ name, lines }) => {
       backgroundColor: theme.palette.background.default,
       minHeight: '100vh'
     }}>
-      <Header />
+      <Header isLoading={loadable.state === 'loading'} />
       <Container>
         <Box py={3}>
           <Box mb={2}>
             <Typography mb={1} variant="h6" component="h2">{name}駅</Typography>
             <CurrentStation name={name} lines={lines} />
           </Box>
-          {loadable.state === 'hasValue' && loadable.contents.length > 0 ? (
+          {loadable.state === 'hasValue' && loadable.contents.length > 0 && (
             <Grid
               container
               spacing={1}
@@ -44,8 +44,6 @@ export const StationDetail: React.FC<Props> = ({ name, lines }) => {
                 <AdjacentStationLoadMore name={name} />
               )}
             </Grid>
-          ):(
-            <Typography>隣接する駅が見つかりませんでした。</Typography>
           )}
         </Box>
       </Container>
