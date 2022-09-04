@@ -8,21 +8,17 @@ type Props = {
 }
 export const AdjacentStationList: React.FC<Props> = ({ name, within, stations }) => {
   return (
-    <Grid item xs={12} md={4}>
-      <Paper sx={{ overflow: 'hidden' }}>
-        <List
-          subheader={
-            <ListSubheader>
-              <Stack direction="row" justifyContent="space-between">
-                <span>{name}駅から{within}駅 </span>
-                <span><Chip color="info" size="small" label={`${stations.length}駅`} /></span>
-              </Stack>
-            </ListSubheader>
-          }
-        >
-          {stations.map(name => (<StationListItem key={name} name={name} />))}
-        </List>
-      </Paper>
-    </Grid>
+    <List
+      subheader={
+        <ListSubheader>
+          <Stack direction="row" justifyContent="space-between">
+            <span>{name}駅から{within}駅 </span>
+            <span><Chip color="info" size="small" label={`${stations.length}駅`} /></span>
+          </Stack>
+        </ListSubheader>
+      }
+    >
+      {stations.map(name => (<StationListItem key={name} name={name} />))}
+    </List>
   )
 }
