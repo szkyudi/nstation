@@ -10,7 +10,7 @@ export const PopularStationChips: React.FC<Props> = ({ stations }) => {
   const isUpperSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={0.5}>
       {stations.map((name, index) => (
         <Grid item key={name}>
           <Link href={`/stations/${name}`}>

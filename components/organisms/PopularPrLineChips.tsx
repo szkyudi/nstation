@@ -9,7 +9,7 @@ export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
   const isUpperSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={0.5}>
       {lines.map(name => (
         <Grid item key={name}>
           <Link href={`/lines/${name}`}>
