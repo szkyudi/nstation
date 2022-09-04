@@ -15,9 +15,20 @@ interface GetStationByNameRequest extends GetStationBaseRequest {
 
 export type GetStationRequest = GetStationByLineRequest | GetStationByNameRequest;
 
+interface NotFoundResponse {
+  response: {
+    error: string;
+  }
+}
 
-export interface GetStationResponse {
+interface SuccessResponse {
   response: {
     station: Station[]
   }
 }
+
+export const isGetStationResponse = (arg: any): arg is SuccessResponse => {
+  return arg.response.station && arg.response.station.length > 0;
+}
+
+export type GetStationResponse = SuccessResponse | NotFoundResponse;

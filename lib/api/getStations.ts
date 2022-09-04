@@ -1,5 +1,5 @@
 import { MY_APP_URL } from "@/constants";
-import { GetStationRequest, GetStationResponse } from "@/interfaces/api/getStations";
+import { GetStationRequest, GetStationResponse, isGetStationResponse } from "@/interfaces/api/getStations";
 import { Station } from "@/interfaces/station";
 
 export async function getStations(params: GetStationRequest): Promise<Station[]> {
@@ -9,5 +9,9 @@ export async function getStations(params: GetStationRequest): Promise<Station[]>
   }
   const res = await fetch(url.toString());
   const data: GetStationResponse = await res.json();
-  return data.response.station;
+  if (isGetStationResponse(data)) {
+    return data.response.station;
+  } else {
+    return [];
+  }
 }
