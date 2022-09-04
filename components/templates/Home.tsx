@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { Header } from "../organisms/Header"
 import { Footer } from "../organisms/Footer";
 import { theme } from "@/lib/styles/theme";
-import { PopularStationList } from "../organisms/PopularStationList";
+import { PopularStationList } from "../organisms/PopularStationChips";
 import { popularStations } from "@/lib/data/popularStations";
 
 export const Home: React.FC = () => {

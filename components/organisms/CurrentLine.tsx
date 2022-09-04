@@ -1,5 +1,6 @@
 import { Station } from "@/interfaces/station";
-import { List, ListItem, ListItemText, ListSubheader, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
+import { LineStationList } from "./LineStationList";
 
 type Props = {
   name: string;
@@ -8,19 +9,7 @@ type Props = {
 export const CurrentLine: React.FC<Props> = ({ name, stations }) => {
   return (
     <Paper>
-      <List
-        subheader={
-          <ListSubheader>
-            {name}に存在する駅の一覧
-          </ListSubheader>
-        }
-      >
-        {stations.map(station => (
-          <ListItem key={station.name}>
-            <ListItemText primary={station.name} />
-          </ListItem>
-        ))}
-      </List>
+      <LineStationList name={name} stations={stations} />
     </Paper>
   )
 }
