@@ -1,13 +1,13 @@
-import { atomFamily, MutableSnapshot, selectorFamily, useRecoilState, useRecoilStateLoadable } from "recoil";
-import { RECOIL_KEYS } from ".";
+import { atomFamily, MutableSnapshot, selectorFamily, useRecoilStateLoadable } from "recoil";
+import { v4 as uuidv4 } from "uuid";
 import { getAdjacentStations } from "../api/getAdjacentStations";
 import { getStationsByName } from "../api/getStationsByName";
 import { useLoading } from "./loading";
 
 const nearStationListState = atomFamily<string[][], string>({
-  key: RECOIL_KEYS.STATION_NEAR_STATION_LIST,
+  key: uuidv4(),
   default: selectorFamily({
-    key: RECOIL_KEYS.STATION_NEAR_STATION_LIST + '/default',
+    key: uuidv4(),
     get: (name) => async () => {
       const currentStations = await getStationsByName(name);
       const adjacentStations = getAdjacentStations(currentStations);

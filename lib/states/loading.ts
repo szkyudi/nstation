@@ -1,8 +1,8 @@
 import { atomFamily, useRecoilState } from "recoil";
-import { RECOIL_KEYS } from ".";
+import { v4 as uuidv4 } from "uuid";
 
 const isLoadingState = atomFamily<boolean, string>({
-  key: RECOIL_KEYS.IS_LOADING,
+  key: uuidv4(),
   default: false
 });
 
