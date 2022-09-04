@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import { alpha, Box, InputBase, LinearProgress, styled } from '@mui/material';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import MuiLink from '@mui/material/Link';
+import { theme } from '@/lib/styles/theme';
 
 
 const Search = styled('form')(({ theme }) => ({
@@ -72,7 +75,7 @@ export const Header: React.FC<Props> = ({ isLoading }) => {
       )}
       <Toolbar>
         <Typography component="h1" variant="h6" sx={{ flexGrow: 1, mr: 2 }}>
-          nStation
+          <Link href="/" passHref><MuiLink color='#fff' underline="none">nStation</MuiLink></Link>
         </Typography>
         <Search onSubmit={handleSubmit}>
           <SearchIconWrapper>
