@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Header } from "../organisms/Header"
 import { Footer } from "../organisms/Footer";
 import { theme } from "@/lib/styles/theme";

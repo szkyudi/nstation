@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
-import { alpha, InputBase, styled } from '@mui/material';
+import { alpha, Box, InputBase, LinearProgress, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 
 
@@ -49,7 +49,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const Header = () => {
+type Props = {
+  isLoading?: boolean;
+}
+export const Header: React.FC<Props> = ({ isLoading }) => {
   const [name, setName] = React.useState("");
   const router = useRouter();
 
@@ -62,6 +65,11 @@ export const Header = () => {
 
   return (
     <AppBar position="static">
+      { isLoading && (
+        <Box sx={{ width: '100%', position: 'absolute' }}>
+          <LinearProgress />
+        </Box>
+      )}
       <Toolbar>
         <Typography component="h1" variant="h6" sx={{ flexGrow: 1, mr: 2 }}>
           nStation
