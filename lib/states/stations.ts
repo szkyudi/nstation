@@ -2,6 +2,7 @@ import { atomFamily, MutableSnapshot, selectorFamily, useRecoilState, useRecoilS
 import { RECOIL_KEYS } from ".";
 import { getAdjacentStations } from "../api/getAdjacentStations";
 import { getStationsByName } from "../api/getStationsByName";
+import { useLoading } from "./loading";
 
 const nearStationListState = atomFamily<string[][], string>({
   key: RECOIL_KEYS.STATION_NEAR_STATION_LIST,
@@ -17,12 +18,14 @@ const nearStationListState = atomFamily<string[][], string>({
 
 export const useStations = (name: string) => {
   const [loadable, setNearStationList] = useRecoilStateLoadable(nearStationListState(name));
+  const { isLoading, startLoad, finishLoad } = useLoading('stationsLoadMore');
 
   const initializeState = (adjacentStationList: string[]) => ({ set }: MutableSnapshot) => {
     set(nearStationListState(name), [adjacentStationList]);
   };
 
   const loadMore = async () => {
+    startLoad();
     if (loadable.state === 'hasValue' && 0 < loadable.contents.length && loadable.contents.length < 3) {
       const targetStationList = loadable.contents[loadable.contents.length - 1];
       if (targetStationList) {
@@ -42,7 +45,8 @@ export const useStations = (name: string) => {
         setNearStationList(prevState => [...prevState, Array.from(adjacentStationSet)]);
       }
     }
+    finishLoad();
   }
 
-  return { initializeState, loadable, loadMore };
+  return { initializeState, loadable, loadMore, isLoading };
 }
