@@ -28,7 +28,7 @@ interface SuccessResponse {
 }
 
 export const isGetStationResponse = (arg: any): arg is SuccessResponse => {
-  return arg.station && arg.station.length > 0;
+  return arg.response.station && arg.response.station.length > 0;
 }
 
 export type GetStationResponse = SuccessResponse | NotFoundResponse;
