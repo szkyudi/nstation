@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import { CurrentStation } from "../organisms/CurrentStation";
 import { Header } from "../organisms/Header"
 import { AdjacentStationList } from "../organisms/AdjacentStationList";
@@ -33,12 +33,15 @@ export const StationDetail: React.FC<Props> = ({ name, lines }) => {
               alignItems="stretch"
             >
               {loadable.contents.map((stations, index) => (
-                <AdjacentStationList
-                  key={JSON.stringify(stations)}
-                  within={index + 1}
-                  name={name}
-                  stations={stations}
-                />
+                <Grid item xs={12} md={4} key={JSON.stringify(stations)}>
+                  <Paper sx={{ overflow: 'hidden' }}>
+                    <AdjacentStationList
+                      within={index + 1}
+                      name={name}
+                      stations={stations}
+                    />
+                  </Paper>
+                </Grid>
               ))}
               {loadable.contents.length < 3 && (
                 <AdjacentStationLoadMore name={name} />

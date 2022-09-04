@@ -58,7 +58,6 @@ export const popularStations = [
   "飯田橋",
   "神保町",
   "市ヶ谷",
-  "市ケ谷",
   "立川",
   "国分寺",
   "二子玉川",
