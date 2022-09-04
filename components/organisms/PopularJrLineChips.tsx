@@ -20,7 +20,7 @@ export const PopularJrLineChips: React.FC<Props> = ({ lines }) => {
               variant="outlined"
               size={isDownSm ? 'small' : 'medium'}
               avatar={<Avatar sx={{ background: grey[300]}}>{index + 1}</Avatar>}
-              label={name}
+              label={name.replace('JR', '')}
             />
           </Link>
         </Grid>
