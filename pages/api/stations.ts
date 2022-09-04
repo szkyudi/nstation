@@ -1,8 +1,8 @@
-import { API_URL } from "@/constants"
+import { EXPRESS_API_URL } from "@/constants"
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const url = new URL(API_URL);
+  const url = new URL(EXPRESS_API_URL);
   for (const key in req.query) {
     const value = req.query[key];
     value && typeof value === 'string' && url.searchParams.set(key, value);
