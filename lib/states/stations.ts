@@ -29,10 +29,10 @@ export const useStations = (name: string) => {
     if (loadable.state === 'hasValue' && 0 < loadable.contents.length && loadable.contents.length < 3) {
       const targetStationList = loadable.contents[loadable.contents.length - 1];
       if (targetStationList) {
+        const responses = await Promise.all(targetStationList.map(name => getStationsByName(name)));
         const adjacentStationSet: Set<string> = new Set();
-        for (const name of targetStationList) {
-          const currentStations = await getStationsByName(name);
-          for (const station of currentStations) {
+        for (const stations of responses) {
+          for (const station of stations) {
             station.prev && adjacentStationSet.add(station.prev);
             station.next && adjacentStationSet.add(station.next);
           }
