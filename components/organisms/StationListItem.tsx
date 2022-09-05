@@ -6,12 +6,14 @@ type Props = {
   name: string;
 }
 export const StationListItem: React.FC<Props> = ({ name }) => (
-  <Link href={`/stations/${name}`} passHref>
-    <ListItemButton component="a">
-      <ListItemIcon>
-        <LinkIcon />
-      </ListItemIcon>
-      <ListItemText primary={name} />
-    </ListItemButton>
-  </Link>
+  <li>
+    <Link href={`/stations/${name}`} passHref>
+      <ListItemButton component="a">
+        <ListItemIcon>
+          <LinkIcon />
+        </ListItemIcon>
+        <ListItemText primary={name} />
+      </ListItemButton>
+    </Link>
+  </li>
 )
