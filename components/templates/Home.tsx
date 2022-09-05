@@ -5,7 +5,7 @@ import { theme } from "@/lib/styles/theme";
 import { PopularStationChips } from "../organisms/PopularStationChips";
 import { popularStations } from "@/lib/data/popularStations";
 import { PopularJrLineChips } from "../organisms/PopularJrLineChips";
-import { popularJsLines } from "@/lib/data/popularJrLines";
+import { popularJrLines } from "@/lib/data/popularJrLines";
 import { popularPrLines } from "@/lib/data/popularPrLines";
 import { PopularPrLineChips } from "../organisms/PopularPrLineChips";
 import { Seo } from "../atoms/Seo";
@@ -41,7 +41,7 @@ export const Home: React.FC = () => {
             spacing={1}
           >
             <Grid item xs={12}>
-              <PopularJrLineChips lines={popularJsLines} />
+              <PopularJrLineChips lines={popularJrLines} />
             </Grid>
           </Grid>
         </Box>

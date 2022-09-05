@@ -1,4 +1,4 @@
-export const popularJsLines = [
+export const popularJrLines = [
   "JR中央線",
   "JR東海道本線",
   "JR山手線",
