@@ -2,13 +2,15 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { Header } from "../organisms/Header"
 import { Footer } from "../organisms/Footer";
 import { theme } from "@/lib/styles/theme";
-import { PopularStationChips } from "../organisms/PopularStationChips";
 import { popularStations } from "@/lib/data/popularStations";
-import { PopularJrLineChips } from "../organisms/PopularJrLineChips";
 import { popularJrLines } from "@/lib/data/popularJrLines";
 import { popularPrLines } from "@/lib/data/popularPrLines";
-import { PopularPrLineChips } from "../organisms/PopularPrLineChips";
+import { PopularStationChips } from "../organisms/PopularStationChips";
 import { Seo } from "../atoms/Seo";
+import dynamic, { DynamicOptions } from "next/dynamic";
+
+const PopularPrLineChips = dynamic(import("../organisms/PopularPrLineChips") as DynamicOptions<{lines: string[]}>, {});
+const PopularJrLineChips = dynamic(import("../organisms/PopularJrLineChips") as DynamicOptions<{lines: string[]}>, {});
 
 export const Home: React.FC = () => {
   return (
