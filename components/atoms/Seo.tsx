@@ -1,14 +1,17 @@
 import { DEFAULT_SITE_TITLE, DEFAULT_META_DESCRIPTION, SITE_URL, SITE_TITLE, TWITTER_ID } from "@/constants"
 import Head from "next/head"
+import { useRouter } from "next/router"
 
 type Props = {
   title?: string,
   url?: string,
+  canonicalUrl?: string,
   description?: string,
   type?: 'website' | 'article',
   imageUrl?: string,
 }
-export const Seo = ({ title, url, description, type = 'article', imageUrl }: Props) => {
+export const Seo = ({ title, url, canonicalUrl, description, type = 'article', imageUrl }: Props) => {
+  const router = useRouter();
   return (
     <Head>
       <title>{title ? `${title}｜${SITE_TITLE}` : DEFAULT_SITE_TITLE}</title>
@@ -24,7 +27,7 @@ export const Seo = ({ title, url, description, type = 'article', imageUrl }: Pro
       <meta name='twitter:card' content='summary' key="twitter:card" />
       <meta name='twitter:site' content={`@${TWITTER_ID}`} key="twitter:site" />
       <meta name='twitter:creator' content={`@${TWITTER_ID}`} key="twitter:creator" />
-      <link rel="canonical" href={url || SITE_URL} />
+      <link rel="canonical" href={canonicalUrl || `${SITE_URL}${router.asPath}`} />
     </Head>
   )
 }
