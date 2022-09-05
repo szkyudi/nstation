@@ -9,8 +9,8 @@ import { PopularStationChips } from "../organisms/PopularStationChips";
 import { Seo } from "../atoms/Seo";
 import dynamic, { DynamicOptions } from "next/dynamic";
 
-const PopularPrLineChips = dynamic(import("../organisms/PopularPrLineChips") as DynamicOptions<{lines: string[]}>, {});
-const PopularJrLineChips = dynamic(import("../organisms/PopularJrLineChips") as DynamicOptions<{lines: string[]}>, {});
+const PopularPrLineChips = dynamic(import("../organisms/PopularPrLineChips").then(mod => mod.PopularPrLineChips) as DynamicOptions<{lines: string[]}>, {});
+const PopularJrLineChips = dynamic(import("../organisms/PopularJrLineChips").then(mod => mod.PopularJrLineChips) as DynamicOptions<{lines: string[]}>, {});
 
 export const Home: React.FC = () => {
   return (
