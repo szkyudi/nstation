@@ -7,6 +7,7 @@ import { alpha, Box, InputBase, LinearProgress, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import MuiLink from '@mui/material/Link';
+import { SITE_TITLE } from '@/constants';
 
 
 const Search = styled('form')(({ theme }) => ({
@@ -73,8 +74,8 @@ export const Header: React.FC<Props> = ({ isLoading }) => {
         </Box>
       )}
       <Toolbar>
-        <Typography component="h1" variant="h6" sx={{ flexGrow: 1, mr: 2 }}>
-          <Link href="/" passHref><MuiLink color='#fff' underline="none">nStation</MuiLink></Link>
+        <Typography component="h1" variant="h6" sx={{ flexGrow: 1, mr: 2, whiteSpace: 'nowrap' }}>
+          <Link href="/" passHref><MuiLink color='#fff' underline="none">{SITE_TITLE}</MuiLink></Link>
         </Typography>
         <Search onSubmit={handleSubmit}>
           <SearchIconWrapper>

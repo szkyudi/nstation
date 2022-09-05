@@ -1,13 +1,10 @@
-import { theme } from "@/lib/styles/theme";
-import { Chip, Grid, useMediaQuery } from "@mui/material";
+import { Chip, Grid } from "@mui/material";
 import Link from "next/link";
 
 type Props = {
   lines: string[];
 }
 export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
-  const isUpperSm = useMediaQuery(theme.breakpoints.up('sm'));
-
   return (
     <Grid container spacing={0.5}>
       {lines.map(name => (
@@ -17,7 +14,6 @@ export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
               clickable
               component="a"
               variant="outlined"
-              size={isUpperSm ? 'medium' : 'small'}
               label={name}
             />
           </Link>

@@ -8,6 +8,7 @@ import { PopularJrLineChips } from "../organisms/PopularJrLineChips";
 import { popularJsLines } from "@/lib/data/popularJrLines";
 import { popularPrLines } from "@/lib/data/popularPrLines";
 import { PopularPrLineChips } from "../organisms/PopularPrLineChips";
+import { Seo } from "../atoms/Seo";
 
 export const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const Home: React.FC = () => {
       backgroundColor: theme.palette.background.default,
       minHeight: '100vh'
     }}>
+      <Seo type='website' />
       <Header />
       <Container>
         <Box mt={4} component="section">

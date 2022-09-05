@@ -1,3 +1,4 @@
+import { Seo } from '@/components/atoms/Seo';
 import { LineDetail } from '@/components/templates/LineDetail';
 import { Station } from '@/interfaces/station';
 import { getStationsByLine } from '@/lib/api/getStationsByLine';
@@ -43,6 +44,7 @@ const StationPage: NextPage<Props> = ({ name, stations }) => {
   const { initializeState } = useLines(name);
   return (
     <RecoilRoot initializeState={initializeState(stations)}>
+      <Seo title={`${name}に存在する駅の一覧`} />
       <LineDetail name={name} />
     </RecoilRoot>
   )

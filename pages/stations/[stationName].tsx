@@ -1,3 +1,4 @@
+import { Seo } from '@/components/atoms/Seo';
 import { StationDetail } from '@/components/templates/StationDetail';
 import { getAdjacentStations } from '@/lib/api/getAdjacentStations';
 import { getStationsByName } from '@/lib/api/getStationsByName';
@@ -46,6 +47,7 @@ const StationPage: NextPage<Props> = ({ name, lines, adjacentStations }) => {
   const { initializeState } = useStations(name);
   return (
     <RecoilRoot initializeState={initializeState(adjacentStations)}>
+      <Seo title={`${name}駅から3駅以内の駅と通っている路線`} />
       <StationDetail name={name} lines={lines} />
     </RecoilRoot>
   )
