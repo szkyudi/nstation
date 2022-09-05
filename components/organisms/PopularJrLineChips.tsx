@@ -1,15 +1,12 @@
 import { Avatar, Chip, Grid } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Link from "next/link";
+import { popularJrLines } from "@/lib/data/popularJrLines";
 
-type Props = {
-  lines: string[];
-}
-export const PopularJrLineChips: React.FC<Props> = ({ lines }) => {
-
+export const PopularJrLineChips: React.FC = () => {
   return (
     <Grid container spacing={0.5}>
-      {lines.map((name, index) => (
+      {popularJrLines.map((name, index) => (
         <Grid item key={name}>
           <Link href={`/lines/${name}`}>
             <Chip
