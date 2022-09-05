@@ -1,13 +1,11 @@
 import { Chip, Grid } from "@mui/material";
 import Link from "next/link";
+import { popularPrLines } from "@/lib/data/popularPrLines";
 
-type Props = {
-  lines: string[];
-}
-export const PopularPrLineChips: React.FC<Props> = ({ lines }) => {
+export const PopularPrLineChips: React.FC = () => {
   return (
     <Grid container spacing={0.5}>
-      {lines.map(name => (
+      {popularPrLines.map(name => (
         <Grid item key={name}>
           <Link href={`/lines/${name}`}>
             <Chip
