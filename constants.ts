@@ -1,7 +1,7 @@
 export const EXPRESS_API_URL = 'https://express.heartrails.com/api/json';
 export const VERCEL_URL = process.env['NEXT_PUBLIC_VERCEL_URL'];
 export const MY_APP_URL = VERCEL_URL ? `https://${VERCEL_URL}` : 'http://localhost:3000';
-export const SITE_TITLE = 'n-eki.com';
+export const SITE_TITLE = 'nstation';
 export const SITE_SUB_TITLE = '3駅以内を検索する';
 export const DEFAULT_SITE_TITLE = `${SITE_SUB_TITLE}｜${SITE_TITLE}`;
 export const DEFAULT_META_DESCRIPTION = '選択した駅から3駅以内の駅の一覧を検索することができます。通勤や通学、家探しなど様々なシーンでご活用いただけます。全国の路線と駅に対応しています。'
